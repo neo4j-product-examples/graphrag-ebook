@@ -62,7 +62,7 @@
                 "$id": "p:1",
                 "token": "managerCik",
                 "type": {
-                  "type": "integer"
+                  "type": "string"
                 },
                 "nullable": true
               },
@@ -203,7 +203,7 @@
         "type": "local",
         "tableSchemas": [
           {
-            "name": "Companies.csv",
+            "name": "Company_Filings.csv",
             "expanded": true,
             "fields": [
               {
@@ -251,7 +251,7 @@
             ]
           },
           {
-            "name": "Asset_Holdings.csv",
+            "name": "Asset_Manager_Holdings.csv",
             "expanded": true,
             "fields": [
               {
@@ -347,7 +347,7 @@
           "node": {
             "$ref": "#n:3"
           },
-          "tableName": "Asset_Holdings.csv",
+          "tableName": "Asset_Manager_Holdings.csv",
           "propertyMappings": [
             {
               "property": {
@@ -367,7 +367,7 @@
           "node": {
             "$ref": "#n:2"
           },
-          "tableName": "Companies.csv",
+          "tableName": "Company_Filings.csv",
           "propertyMappings": [
             {
               "property": {
@@ -395,7 +395,7 @@
           "relationship": {
             "$ref": "#r:1"
           },
-          "tableName": "Asset_Holdings.csv",
+          "tableName": "Asset_Manager_Holdings.csv",
           "propertyMappings": [],
           "fromMapping": {
             "fieldName": "managerCik"
