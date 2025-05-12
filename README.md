@@ -1,72 +1,63 @@
-# Neo4j RAG Workshop — May 2025
+# Neo4j GraphRAG Book Example
 
-Welcome to the hands-on workshop for Retrieval-Augmented Generation (RAG) with Neo4j, OpenAI, and PDF/SEC data!
+This repository contains all code, data, and notebooks referenced in the Neo4j GraphRAG book. It provides a step-by-step guide to building a Retrieval-Augmented Generation (RAG) system using Neo4j, OpenAI, LangChain, and real-world financial filings.
 
 ---
 
-## 🚀 Workshop Goals
-- Learn how to build a knowledge graph from real documents (10-Ks, CSVs)
-- Practice loading, querying, and analyzing data in Neo4j AuraDB
-- Explore retrieval-augmented generation (RAG) with OpenAI and LangChain
-
+## 📖 Project Overview
+- Ingest and model company, filing, and holdings data as a knowledge graph in Neo4j
+- Run retrieval-augmented queries and semantic search over filings and financial data
+- Use Jupyter notebooks for hands-on experimentation
 
 ---
 
 ## 📂 Project Structure
-- **PDF Loader Script for Neo4j GraphRAG.py** — Loads PDF content and structured data into Neo4j, builds the graph, and creates vector embeddings.
-- **Retreivers_notebook.ipynb** — Interactive notebook for querying the graph, running RAG workflows, and debugging retrievals.
-- **company_name_utils.py** — Utility for normalizing and filtering company names.
-- **data/** — Sample CSVs and PDFs for ingestion.
-- **.env.sample** — Template for required environment variables (never commit your real `.env`!).
+- `01_PDF_Loader_for_Neo4j_GraphRAG.ipynb` — Loads PDF and CSV data into Neo4j, builds the graph, and creates vector embeddings
+- `02_Retreivers_notebook.ipynb` — Interactive notebook for querying the graph, running RAG workflows, and experimenting with retrieval
+- `03_Neo4j_agent_notebook.ipynb` — (Optional) Agent-based exploration and advanced workflows
+- `data/` — Contains:
+    - `Asset_Manager_Holdings.csv`, `Company_Filings.csv`: Sample data files
+    - `form10k-sample/`: Example 10-K filings for graph ingestion
+- `Additional_Info/` — (Optional) Additional scripts and explained notebooks
+- `.env.sample` — Template for required environment variables
 
 ---
 
 ## 🛠️ Setup Instructions
-1. **Clone the repo**
-2. **Install requirements**
+1. **Clone the repository**
+2. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
-3. **Copy `.env.sample` to `.env` and fill in your credentials:**
-   - `OPENAI_API_KEY` (never share or commit!)
-   - `NEO4J_URI`, `NEO4J_USERNAME`, `NEO4J_PASSWORD`
-4. **Start Neo4j AuraDB** (see workshop handout for connection details)
-5. **Run the loader script** to ingest data
-6. **Open the notebook** to run retrievals and explore the graph
+3. **Configure environment variables:**
+   - Copy `.env.sample` to `.env` and fill in:
+     - `OPENAI_API_KEY`
+     - `NEO4J_URI`, `NEO4J_USERNAME`, `NEO4J_PASSWORD`
+4. **Start Neo4j AuraDB** (see book for connection details)
+5. **Run the loader notebook** (`01_PDF_Loader_for_Neo4j_GraphRAG.ipynb`) to ingest data
+6. **Open `02_Retreivers_notebook.ipynb`** to run retrievals and explore the graph
 
 ---
 
-## 🧑‍💻 Workshop Activities
-- Load and normalize company data from CSV
-- Ingest PDF filings, extract entities/relationships
-- Connect risk factors to documents in the graph
-- Use Neo4j Data Impor in the console to load data
-- Run natural language and Cypher-powered retrievals
-- Visualize and analyze graph results
+## 📊 Data Files
+- All sample data used in the book is in the `data/` directory
+- You may add or replace files in `form10k-sample/` as needed for your experiments
 
 ---
 
-## 📝 Best Practices
-- **Never commit secrets** — `.env` is in `.gitignore` by default
-- Use `requirements.txt` for reproducible environments
-- Modularize code for easy experimentation
-- Use the notebook for interactive exploration and debugging
+## 🧹 Cleaning Up Unnecessary Files
+- You may safely delete the following if not used in your workflow:
+    - `Additional_Info/__pycache__/`
+    - Any script or notebook in `Additional_Info/` not referenced in the book
+    - `neo4j_importer_model_2025-05-08.json` if not required
+- Keep only the notebooks and data files you use in your book walkthrough
 
 ---
 
-## 🏃‍♂️ Running the Agent in the Notebook
-
-Open `Retreivers_notebook.ipynb` in Jupyter or VS Code. Look for the section titled **"Conversational Agent"** or similar.
-
-- Run the setup cells to load environment variables and initialize the agent.
-- Use the provided code cell to ask questions, for example:
-  ```python
-  agent.ask("What are the risk factors for Apple?")
-  agent.ask("Show all companies facing cybersecurity threats.")
-  ```
-- The agent will use Neo4j and OpenAI to answer using your loaded graph data.
-
-> **Tip:** You can modify the notebook to experiment with custom queries or workflows!
+## 📝 Notes
+- **Never commit secrets** — `.env` is in `.gitignore`
+- Use Jupyter or VS Code for interactive exploration
+- All notebooks are designed to be run step-by-step as described in the book
 
 ---
 
@@ -78,6 +69,4 @@ Open `Retreivers_notebook.ipynb` in Jupyter or VS Code. Look for the section tit
 
 ---
 
-**Enjoy the workshop!**
-
-For help, ask an instructor or open an issue in this repo.
+For questions or help, open an issue in this repo.
