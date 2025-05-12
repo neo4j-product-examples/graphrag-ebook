@@ -5,15 +5,15 @@
       {
         "id": "n:2",
         "position": {
-          "x": 78.481072112995,
-          "y": -232.15665000017998
+          "x": 255.55048691771646,
+          "y": -346.1669502923746
         }
       },
       {
         "id": "n:3",
         "position": {
-          "x": -204.29871340065833,
-          "y": -232.87624812677717
+          "x": 97.1418093524241,
+          "y": 31.541178508130166
         }
       }
     ]
@@ -39,14 +39,6 @@
               {
                 "$id": "p:4",
                 "token": "ticker",
-                "type": {
-                  "type": "string"
-                },
-                "nullable": true
-              },
-              {
-                "$id": "p:5",
-                "token": "cikId",
                 "type": {
                   "type": "string"
                 },
@@ -81,7 +73,40 @@
           {
             "$id": "rt:1",
             "token": "OWNS",
-            "properties": []
+            "properties": [
+              {
+                "$id": "p:5",
+                "token": "position_status",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:6",
+                "token": "Value",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:7",
+                "token": "shares",
+                "type": {
+                  "type": "integer"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:8",
+                "token": "share_value",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              }
+            ]
           }
         ],
         "nodeObjectTypes": [
@@ -118,6 +143,20 @@
         ],
         "constraints": [
           {
+            "$id": "c:2",
+            "name": "managerName_AssetManager_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:3"
+            },
+            "properties": [
+              {
+                "$ref": "#p:2"
+              }
+            ]
+          },
+          {
             "$id": "c:1",
             "name": "name_Company_uniq",
             "constraintType": "uniqueness",
@@ -128,20 +167,6 @@
             "properties": [
               {
                 "$ref": "#p:3"
-              }
-            ]
-          },
-          {
-            "$id": "c:2",
-            "name": "managerCik_AssetManager_uniq",
-            "constraintType": "uniqueness",
-            "entityType": "node",
-            "nodeLabel": {
-              "$ref": "#nl:3"
-            },
-            "properties": [
-              {
-                "$ref": "#p:1"
               }
             ]
           }
@@ -163,7 +188,7 @@
           },
           {
             "$id": "i:2",
-            "name": "managerCik_AssetManager_uniq",
+            "name": "managerName_AssetManager_uniq",
             "indexType": "default",
             "entityType": "node",
             "nodeLabel": {
@@ -171,7 +196,7 @@
             },
             "properties": [
               {
-                "$ref": "#p:1"
+                "$ref": "#p:2"
               }
             ]
           }
@@ -193,7 +218,7 @@
             "$ref": "#n:3"
           },
           "keyProperty": {
-            "$ref": "#p:1"
+            "$ref": "#p:2"
           }
         }
       ]
@@ -203,7 +228,7 @@
         "type": "local",
         "tableSchemas": [
           {
-            "name": "Companies.csv",
+            "name": "Company_Filings.csv",
             "expanded": true,
             "fields": [
               {
@@ -251,7 +276,7 @@
             ]
           },
           {
-            "name": "Asset_Holdings.csv",
+            "name": "Asset_Manager_Holdings.csv",
             "expanded": true,
             "fields": [
               {
@@ -347,19 +372,19 @@
           "node": {
             "$ref": "#n:3"
           },
-          "tableName": "Asset_Holdings.csv",
+          "tableName": "Asset_Manager_Holdings.csv",
           "propertyMappings": [
             {
+              "fieldName": "managerCik",
               "property": {
                 "$ref": "#p:1"
-              },
-              "fieldName": "managerCik"
+              }
             },
             {
+              "fieldName": "managerName",
               "property": {
                 "$ref": "#p:2"
-              },
-              "fieldName": "managerName"
+              }
             }
           ]
         },
@@ -367,25 +392,19 @@
           "node": {
             "$ref": "#n:2"
           },
-          "tableName": "Companies.csv",
+          "tableName": "Asset_Manager_Holdings.csv",
           "propertyMappings": [
             {
+              "fieldName": "companyName",
               "property": {
                 "$ref": "#p:3"
-              },
-              "fieldName": "name"
+              }
             },
             {
+              "fieldName": "ticker",
               "property": {
                 "$ref": "#p:4"
-              },
-              "fieldName": "ticker"
-            },
-            {
-              "property": {
-                "$ref": "#p:5"
-              },
-              "fieldName": "cik"
+              }
             }
           ]
         }
@@ -395,10 +414,35 @@
           "relationship": {
             "$ref": "#r:1"
           },
-          "tableName": "Asset_Holdings.csv",
-          "propertyMappings": [],
+          "tableName": "Asset_Manager_Holdings.csv",
+          "propertyMappings": [
+            {
+              "fieldName": "position_status",
+              "property": {
+                "$ref": "#p:5"
+              }
+            },
+            {
+              "fieldName": "Value",
+              "property": {
+                "$ref": "#p:6"
+              }
+            },
+            {
+              "fieldName": "shares",
+              "property": {
+                "$ref": "#p:7"
+              }
+            },
+            {
+              "fieldName": "share_value",
+              "property": {
+                "$ref": "#p:8"
+              }
+            }
+          ],
           "fromMapping": {
-            "fieldName": "managerCik"
+            "fieldName": "managerName"
           },
           "toMapping": {
             "fieldName": "companyName"
