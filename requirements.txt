@@ -2,6 +2,6 @@ neo4j-graphrag[openai]
 python-dotenv
 pandas
 jupyter
-numpy #TODO: graphrag-python bug - update library deps to remove this
-rapidfuzz #TODO: graphrag-python bug - update library deps to remove this
-spacy #TODO: graphrag-python bug - update library deps to remove this
+numpy
+rapidfuzz
+spacy

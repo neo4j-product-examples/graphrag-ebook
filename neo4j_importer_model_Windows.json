@@ -5,15 +5,22 @@
       {
         "id": "n:2",
         "position": {
-          "x": 255.55048691771646,
-          "y": -346.1669502923746
+          "x": 168.86597738758664,
+          "y": -170.11696701984292
         }
       },
       {
         "id": "n:3",
         "position": {
-          "x": 97.1418093524241,
-          "y": 31.541178508130166
+          "x": 64.97023880515943,
+          "y": -271.4077774786122
+        }
+      },
+      {
+        "id": "n:1",
+        "position": {
+          "x": 301.8110071058923,
+          "y": -87.841503871026
         }
       }
     ]
@@ -67,6 +74,20 @@
                 "nullable": true
               }
             ]
+          },
+          {
+            "$id": "nl:1",
+            "token": "Document",
+            "properties": [
+              {
+                "$id": "p:9",
+                "token": "path",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
           }
         ],
         "relationshipTypes": [
@@ -107,6 +128,11 @@
                 "nullable": true
               }
             ]
+          },
+          {
+            "$id": "rt:2",
+            "token": "FILED",
+            "properties": []
           }
         ],
         "nodeObjectTypes": [
@@ -125,6 +151,14 @@
                 "$ref": "#nl:3"
               }
             ]
+          },
+          {
+            "$id": "n:1",
+            "labels": [
+              {
+                "$ref": "#nl:1"
+              }
+            ]
           }
         ],
         "relationshipObjectTypes": [
@@ -138,6 +172,18 @@
             },
             "to": {
               "$ref": "#n:2"
+            }
+          },
+          {
+            "$id": "r:2",
+            "type": {
+              "$ref": "#rt:2"
+            },
+            "from": {
+              "$ref": "#n:2"
+            },
+            "to": {
+              "$ref": "#n:1"
             }
           }
         ],
@@ -167,6 +213,20 @@
             "properties": [
               {
                 "$ref": "#p:3"
+              }
+            ]
+          },
+          {
+            "$id": "c:3",
+            "name": "path_Document_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:1"
+            },
+            "properties": [
+              {
+                "$ref": "#p:9"
               }
             ]
           }
@@ -199,6 +259,20 @@
                 "$ref": "#p:2"
               }
             ]
+          },
+          {
+            "$id": "i:3",
+            "name": "path_Document_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:1"
+            },
+            "properties": [
+              {
+                "$ref": "#p:9"
+              }
+            ]
           }
         ]
       }
@@ -219,6 +293,14 @@
           },
           "keyProperty": {
             "$ref": "#p:2"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:1"
+          },
+          "keyProperty": {
+            "$ref": "#p:9"
           }
         }
       ]
@@ -260,8 +342,15 @@
                 }
               },
               {
-                "name": "form10KUrls",
+                "name": "path_Windows",
                 "sample": "data/form10k-sample/0001018724-23-000004.pdf",
+                "recommendedType": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "path_Mac_ix",
+                "sample": "data\\form10k-sample/0001018724-23-000004.pdf",
                 "recommendedType": {
                   "type": "string"
                 }
@@ -407,6 +496,20 @@
               }
             }
           ]
+        },
+        {
+          "node": {
+            "$ref": "#n:1"
+          },
+          "tableName": "Company_Filings.csv",
+          "propertyMappings": [
+            {
+              "property": {
+                "$ref": "#p:9"
+              },
+              "fieldName": "path_Windows"
+            }
+          ]
         }
       ],
       "relationshipMappings": [
@@ -446,6 +549,16 @@
           },
           "toMapping": {
             "fieldName": "companyName"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:2"
+          },
+          "tableName": "Company_Filings.csv",
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "name"
           }
         }
       ]
