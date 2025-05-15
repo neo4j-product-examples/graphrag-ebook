@@ -1,4 +1,4 @@
-cusip6,cik,name,cusip,path_Windows,path_Mac_ix,ticker
+cusip6,cik,name,cusip,path_Mac_ix,path_Windows,ticker
 23135,1018724,AMAZON,23135106,data/form10k-sample/0001018724-23-000004.pdf,data\form10k-sample/0001018724-23-000004.pdf,AMZN
 67066,1045810,NVIDIA CORPORATION,067066G104,data/form10k-sample/0001045810-23-000017.pdf,data\form10k-sample/0001045810-23-000017.pdf,NVDA
 378331,1490054,APPLE INC,3783310,data/form10k-sample/0001096906-23-001489.pdf,data\form10k-sample/0001096906-23-001489.pdf,AAPL
