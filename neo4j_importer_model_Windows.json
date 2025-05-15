@@ -559,6 +559,9 @@
           "propertyMappings": [],
           "fromMapping": {
             "fieldName": "name"
+          },
+          "toMapping": {
+            "fieldName": "path_Windows"
           }
         }
       ]
